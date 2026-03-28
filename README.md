@@ -1,2 +1,17 @@
-# testboard
-TestBoard is a lightweight web application designed to organize and manage functional and regression tests performed during each software release. It helps teams replace manual spreadsheets with a structured, centralized platform for tracking test cases, prerequisites, incidents, and execution 
+# TestBoard - internal testing tool
+
+TestBoard is a small web application designed to help organize and track manual tests performed during each software release.  
+The goal is to replace spreadsheets with a simple, centralized tool.
+
+## Status
+Project just started. Basic setup and authentication will be implemented first.
+
+## Tech Stack
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Prisma
+- PostgreSQL
+
+## Development
+Instructions will be added once the initial setup is complete.
