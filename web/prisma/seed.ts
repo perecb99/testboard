@@ -1,24 +1,20 @@
-﻿import { PrismaClient } from "../generated/prisma/client";
-import { PrismaPg } from "@prisma/adapter-pg";
-
-const connectionString = process.env.DATABASE_URL;
-
-const prisma = new PrismaClient({
-  adapter: new PrismaPg({ connectionString }),
-});
+﻿import { prisma } from "../lib/prisma";
+import bcrypt from "bcrypt";
 
 async function main() {
+  const hashedPassword = await bcrypt.hash("admin123", 10);
+
   const admin = await prisma.user.upsert({
     where: { email: "admin@testboard.com" },
     update: {
       name: "Admin",
-      passwordHash: "admin123",
+      passwordHash: hashedPassword,
       role: "ADMIN",
     },
     create: {
       email: "admin@testboard.com",
       name: "Admin",
-      passwordHash: "admin123",
+      passwordHash: hashedPassword,
       role: "ADMIN",
     },
   });
