@@ -1,6 +1,15 @@
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import LoginForm from "./login-form";
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    redirect("/");
+  }
+
   return (
     <main className="mx-auto flex min-h-screen max-w-md items-center px-6">
       <div className="w-full rounded-2xl border p-6 shadow-sm">
